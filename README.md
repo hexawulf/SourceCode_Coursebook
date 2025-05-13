@@ -51,6 +51,6 @@ Edit
 ## 🔒 License
 
 Private educational project for coursework submission.  
-All code © 2025 by Erling Wulf (0xWulf), IU student.
+All code © 2025 by 0xWulf, IU student.
 
 ---
