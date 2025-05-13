@@ -1,0 +1,84 @@
+package calendar_01;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+public class MainClass_01{
+
+	public static void main(String[] args){
+		//Generation of GregorianCalendar Objects
+		System.out.println("Generation of GregorianCalendar Objects");
+		GregorianCalendar calendar1 = new GregorianCalendar();
+		GregorianCalendar calendar2 = new GregorianCalendar(2013, 6, 9, 18, 29, 35);
+		System.out.println("calendar1=" + calendar1);//why is the output like this?
+		System.out.println("calendar2=" + calendar2);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Setting attributes of GregorianCalendar Objects 
+		calendar1.set(Calendar.YEAR, 2013);
+		calendar1.set(Calendar.MONTH, Calendar.DECEMBER);
+		calendar1.set(Calendar.DAY_OF_MONTH, 24);
+		
+		calendar2.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		calendar2.set(Calendar.HOUR_OF_DAY, 20);
+		calendar2.set(Calendar.MINUTE, 18);
+		calendar2.set(Calendar.SECOND, 12);
+		
+		System.out.println("calendar1=" + calendar1);//why is the output like this?
+		System.out.println("Output 01 => calendar2=" + calendar2);
+		System.out.println("Output 02 => calendar2=" + calendar2);
+		System.out.println("Output 03 => calendar2=" + calendar2);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Querying Attributes of GregorianCalendar Objects
+		System.out.println("Querying Attributes of GregorianCalendar Objects");
+		int year = calendar1.get(Calendar.YEAR);
+		int month = calendar1.get(Calendar.MONTH);
+		int dayInMonth = calendar1.get(Calendar.DAY_OF_MONTH);
+		System.out.println("\n\nBreakpoint 01 BEFORE calling the getter ==> calendar2=" + calendar2  + "\n\n");
+		int weekday = calendar2.get(Calendar.DAY_OF_WEEK);
+		System.out.println("\n\nBreakpoint 02 AFTER calling the getter ==> calendar2=" + calendar2  + "\n\n");
+		int hour = calendar2.get(Calendar.HOUR_OF_DAY);
+		int minute = calendar2.get(Calendar.MINUTE);
+		int second =calendar2.get(Calendar.SECOND);
+
+		
+		System.out.println("calendar1 year=" + year);
+		System.out.println("calendar1 month=" + month);
+		System.out.println("calendar1 dayInMonth=" + dayInMonth);
+		System.out.println("calendar2 weekday=" + weekday);
+		System.out.println("calendar2 hour=" + hour);
+		System.out.println("calendar2 minute=" + minute);
+		System.out.println("calendar2 second=" + second);
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Rolling forward single attributes of a GregorianCalendar
+//		GregorianCalendar dateLastpasswordChange = new GregorianCalendar();
+//		Date now = dateLastpasswordChange.getTime();
+//		System.out.println("Before rolling dateLastpasswordChange=> now=" + now);
+//		dateLastpasswordChange.roll(Calendar.MONTH,10);
+//		Date nowPlusSixMonths =  dateLastpasswordChange.getTime();
+//		System.out.println("After rolling dateLastpasswordChange=> nowPlusSixMonths=" + nowPlusSixMonths);
+		
+		/*Recipe:
+		 * 1.Create Calendar object
+		 * 2.Set whatever you need to set in the Calendar object
+		 * 3.Create Date object by getting the time from theCalendar object
+		 * If you need to manipulate the Date-object, 
+		 *  do whatever you need in the Calendar-object,
+		 *  and then get the time from it
+		 * If you need a specific format for the Date, use DateFormat to set it*/
+		
+		
+		//As usual --this is your playground and test area
+		
+		
+		
+	}//main
+
+}//class

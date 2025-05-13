@@ -1,0 +1,160 @@
+package comparisonOperators_compareTo_01;
+
+public class Customer implements Comparable{
+/*
+ * Question for students:
+ * Why did I commented the next line?
+ * Make some tests*/
+//public class Customer implements Comparable<Customer>{
+	
+	private int customerNumber;
+	private String firstName;
+	private String name;
+	private String sex;
+	private String birthdate;
+	private int age;
+	
+	public Customer(String firstName, String name, String sex, String birthdate){
+		this.firstName = firstName;
+		this.name = name;
+		this.sex = sex ;
+		this.birthdate = birthdate;
+	}
+	
+	
+	public int getCustomerNumber() {
+		return customerNumber;
+	}
+
+	public void setCustomerNumber(int customerNumber) {
+		this.customerNumber = customerNumber;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	/* In order to guarantee that we did not forget any of the attributes in the toString method,
+	 * go up to the list of attributes and click each of them to get it highlighted
+	 * The editor will then show you all occurrences of the corresponding string in the file*/
+	public String toString(){
+		return "Customer object contains following data: " + "\n" +
+				"First name:" + firstName + "\n" +
+				"Name:"  + name + "\n" +
+				"Sex:" + sex + "\n"+
+				"Birthdate:" + birthdate;
+	}
+	
+	
+//	@Override
+//	public boolean equals(Object obj) {
+//		if( this == obj) return true;//Is it already the same object?
+//		
+//		if(obj instanceof Customer){//Check if the transferred object has the expected type 
+//			Customer c = (Customer) obj;//Typecast the correct type
+//			return customerNumber == c.customerNumber;//Comparison of the relevant attributes(here customer number)
+//		}else{
+//			return super.equals(obj);//If obj does not have the correct type, call the equals method of the superclass 
+//		}
+//	}
+	
+	
+	/*Question for students:
+	 * In the above implementation the '=='-operator was used
+	 * But in the implementation below the equals()-method is used
+	 * Please explain why?
+	 * Answer: String is a reference type, 
+	 * so if we compare this.firstName == c.firstName the result will be FALSE, since they refer to different objects
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if( this == obj) return true;//Is it already the same object?
+		
+		//Any Object obj of any class can be passed as a parameter, therefore instanceof must be used 
+		if(obj instanceof Customer){//Check if the transferred object has the expected type 
+			Customer c = (Customer) obj;//Typecast the correct type
+			return (this.firstName.equals(c.firstName) 
+					&&(this.name.equals(c.name)) 
+					&& (this.birthdate.equals(c.birthdate)));//Comparison of the relevant attributes
+		}else{
+			return super.equals(obj);//If obj does not have the correct type, call the equals method of the superclass 
+		}
+	}
+	
+	/*There remain situations where the == operator is not accurate enough
+	 * and the equals() method is too complex.
+	 * This is the case, for example, when one wants to know if a given object is contained in a very large list.
+	 * For such use-cases the hashCode() method of the Object class can be overridden*/
+	public int hashCode(){
+		String s = name + firstName;//Combine the two Strings into one
+		return s.hashCode();//return the hashCode of the obtained String 
+	}
+
+//	@Override
+//	public int compareTo(Customer c) {
+//		
+//		//If this.customerNumber < c.customerNumber method returns negative value
+//		//If this.customerNumber > c.customerNumber method returns positive value
+//		//If this.customerNumber = c.customerNumber method returns zero
+//		return this.customerNumber - c.customerNumber;
+//	}
+	
+	//Using compareTo() from the wrapper class
+//	@Override
+//	public int compareTo(Object obj) {
+//		Customer c = (Customer) obj;
+//		Integer number = this.customerNumber;
+//		return number.compareTo(c.customerNumber);
+//	}
+	
+	//Using lexicographical comparison
+	@Override
+	public int compareTo(Object obj) {
+		Customer c = (Customer) obj;
+		System.out.println("Adalbert breakpoint 00=" + this.name.equals(c.name));
+		if(this.name.equals(c.name)) {//names are equal, compare firstnames
+			System.out.println("Adalbert breakpoint 01");
+			return this.firstName.compareToIgnoreCase(c.firstName);
+		}else{//names are not equal, compare them 
+			return this.name.compareToIgnoreCase(c.name);
+		}
+	}
+	
+}

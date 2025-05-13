@@ -1,0 +1,79 @@
+package splittingCharacterStrings_01;
+
+public class MainClass_01{
+
+	public static void main(String[] args){
+		//Utilization of the Method split() to Separate strings
+		System.out.println("\t Utilization of the Method split() to Separate strings");
+		String line = "'bah90131','Title 1','Manufacturer 1','12,56'";
+		String[] separation = line.split("','");
+		for(String value : separation){
+			System.out.println(value);
+		}
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Extended processing of a CSV line
+//		System.out.println("Extended processing of a CSV line");
+//		String center = line.substring(//Extraction of the String between the quotation marks
+//				line.indexOf('\'') + 1, //don't forget it is inclusive, so add +1 to reach the correct index 
+//				line.lastIndexOf('\''));//don't forget it is exclusive, so no addition here	
+//		System.out.println("center= \t" + center);
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+//		System.out.println("\nBefore starting the detailed explanation");
+//		//another way with more details
+//		int indexOfFirstQuotationMark = line.indexOf('\'');
+//		int indexOfLastQuotationMark = line.lastIndexOf('\'');
+//		String center_01 = line.substring(indexOfFirstQuotationMark + 1, indexOfLastQuotationMark);
+//		System.out.println("center_01=\t" + center_01);
+//		
+//		String[] separation1 = center.split("','");
+//		for(String value : separation1){
+//			System.out.println(value);
+//		}
+//		
+//		String productnumber = separation1[0];
+//		String title = separation1[1];
+//		String manufacturer = separation1[2];
+//		float price = Float.parseFloat(separation1[3].replace(",", "."));//need to replace the comma with decimal point 
+//		System.out.println("After the detailed explanation");
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//another way with more details
+//		String priceAsString = separation1[3];
+//		System.out.println("\nBefore replacement of the comma priceAsString=" + priceAsString);
+//		String priceAsString_FixedComma = priceAsString.replace(",", ".");
+//		System.out.println("\nAfter replacement of the comma priceAsString_FixedComma=" + priceAsString_FixedComma);
+//		float price_01 = Float.parseFloat(priceAsString_FixedComma);
+//		
+//		System.out.println("\nAfter reading the values:");
+//		System.out.println("productnumber=" + productnumber);
+//		System.out.println("title=" + title);
+//		System.out.println("manufacturer=" + manufacturer);
+//		System.out.println("price=" + price);
+//		System.out.println("price_01=" + price_01);
+		
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		
+		
+		
+		
+		//As usual --this is your playground and test area
+		
+		
+		
+		
+		
+		
+		
+		
+	}//main
+
+}//class

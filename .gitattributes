@@ -1,0 +1,7 @@
+# Java source code: enforce LF
+*.java text eol=lf
+
+# Shell and config scripts
+*.sh text eol=lf
+*.md text eol=lf
+*.gitignore text eol=lf

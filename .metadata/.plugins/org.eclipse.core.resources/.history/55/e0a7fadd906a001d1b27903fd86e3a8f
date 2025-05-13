@@ -1,0 +1,59 @@
+package stringBuffer_01;
+
+public class MainClass{
+
+	public static void main(String[] args){
+		//Temporary Objects in the Concatenation of Strings
+		String salutation = "Mister";
+		String lastName = "Lerner";
+		String greeting = "Hello and welcome, " + salutation + " " + lastName + "!";
+		System.out.println("greeting=" + greeting);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Utilization of the class "StringBuffer"
+//		String sectionDefinition = "XsectionDefinition, ";
+//		String sectionServiceDescription = "sectionServiceDescription, ";
+//		String sectionApplicationPermission = "sectionApplicationPermission, ";
+//		String sectionRestrictions = "sectionRestrictions, ";
+//		String sectionReservsations = "sectionReservsations, ";
+//		
+//		StringBuffer licenceAgreement = new StringBuffer();
+//		licenceAgreement.append(sectionDefinition);
+//		licenceAgreement.append(sectionServiceDescription);
+//		licenceAgreement.append(sectionApplicationPermission);
+//		licenceAgreement.append(sectionRestrictions);
+//		licenceAgreement.append(sectionReservsations);
+//		String eula = licenceAgreement.toString();
+//		System.out.println("eula = " + eula);
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//checking the capacity of the StringBuffer
+//		int capacity = licenceAgreement.capacity();
+//		System.out.println("capacity=" + capacity);
+//		
+//		//Extending the StringBuffer
+//		String extension = "This is an extension and it is very very long ";
+//		licenceAgreement.append(extension);
+//		String secondEula = licenceAgreement.toString();
+//		System.out.println("secondEula = " + secondEula);
+//		capacity = licenceAgreement.capacity();
+//		System.out.println("after extension capacity=" + capacity);
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//testing other methods from the class StringBuffer
+//		char firstChar = licenceAgreement.charAt(0);
+//		System.out.println("firstChar=" + firstChar + "|");
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		//As usual --this is your playground and test area
+		
+		
+	}//main
+
+}//class

@@ -1,0 +1,68 @@
+package stacks_00;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class MainClass_01{
+
+	public static void main(String[] args){
+		Deque<String> myStack01 = new ArrayDeque<String>();
+		myStack01.addFirst("first pushed word");
+		myStack01.addFirst("second pushed word");
+		myStack01.addFirst("third pushed word");
+		myStack01.addFirst("fourth pushed word");
+		myStack01.addFirst("fifth pushed word");
+		
+		//printing myStack01 after the initial values were added
+		System.out.println("Printing myStack01 after the initial values were added");
+		for(String currentWordFromTheStack : myStack01){
+			System.out.println("currentWordFromTheStack=" + currentWordFromTheStack);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//testing other methods 
+//		String peekedWord01 = myStack01.peekFirst();
+//		System.out.println("peekedWord01= " + peekedWord01);
+//		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//printing myStack01 after calling peekFirst()
+//		System.out.println("printing myStack01 after calling peekFirst()");
+//		for(String currentWordFromTheStack : myStack01){
+//			System.out.println("currentWordFromTheStack=" + currentWordFromTheStack);
+//		}
+//		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+//		//removing a word with removeFirst()
+//		String removedWord01 = myStack01.removeFirst();
+//		System.out.println("removedWord01= " + removedWord01 );
+		System.out.println("#############################################################################################");
+		
+//		//printing myStack01 after calling removeFirst()
+//		System.out.println("printing myStack01 after calling removeFirst()");
+//		for(String currentWordFromTheStack : myStack01){
+//			System.out.println("currentWordFromTheStack=" + currentWordFromTheStack);
+//		}
+		System.out.println("#############################################################################################");
+		
+//		String peekedWord02 = myStack01.peekFirst();
+//		System.out.println("peekedWord02=" + peekedWord02);
+		System.out.println("#############################################################################################");
+		
+//		//what happens if you dont use the corresponding Stack-methods 
+//		String someRandomWord = "Why is this word here?";
+//		myStack01.add(someRandomWord);
+//		
+//		System.out.println("printing myStack01 after executing myStack01.add(someRandomWord)");
+//		for(String currentWordFromTheStack : myStack01){
+//			System.out.println("currentWordFromTheStack=" + currentWordFromTheStack);
+//		}
+		System.out.println("#############################################################################################");
+	}//main
+
+}//class

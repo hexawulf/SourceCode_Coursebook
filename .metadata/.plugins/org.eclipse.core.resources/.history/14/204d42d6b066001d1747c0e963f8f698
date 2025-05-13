@@ -1,0 +1,155 @@
+package queues_00;
+
+import java.util.NoSuchElementException;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+public class MainClass01{
+
+	public static void main(String[] args){
+		Queue<Integer> myQueue01 = new ConcurrentLinkedQueue<Integer>();
+		Queue<Integer> myQueue02 = new ConcurrentLinkedQueue<Integer>();
+		
+		//testing the add()-method
+//		myQueue01.add(111);
+//		myQueue01.add(222);
+//		myQueue01.add(333);
+//		myQueue01.add(444);
+//		myQueue01.add(555);
+//		myQueue01.add(666);
+		
+		for(int counter = 111; counter < 777; counter = counter + 111){
+			boolean addedSuccessfully =  myQueue01.add(counter);
+			System.out.println("next number " + counter + " addedSuccessfully=" + addedSuccessfully);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//printing the content of myQueue01 after the first elements were added
+		System.out.println("Printing the content of myQueue01 after the first elements were added with the method add()");
+		for(int currentNumberFromTheQueue : myQueue01){
+			System.out.println("currentNumberFromTheQueue=" + currentNumberFromTheQueue);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//testing the method offer()
+		myQueue02.offer(1234567);
+		myQueue02.offer(999);
+		myQueue02.offer(888);
+		myQueue02.offer(777);
+		
+		boolean addedSuccessfully_02 = myQueue02.offer(989898);
+		if(addedSuccessfully_02 == true){//everything is all right, the number was added successfully   
+			System.out.println("Number added with offer() success!!");
+		}else {//something went wrong and the number could not be added
+			//do some error handling ....
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//printing the content of myQueue02 after the first elements were added
+		System.out.println("Printing the content of myQueue02 after the first elements were added with the method offer()");
+		for(int currentNumberFromTheQueue : myQueue02){
+			System.out.println("currentNumberFromTheQueue=" + currentNumberFromTheQueue);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//testing the method remove()
+		int firstNumberInTheQueue = myQueue01.remove();
+		System.out.println("firstNumberInTheQueue=" + firstNumberInTheQueue);
+		
+		System.out.println("Printing the content of myQueue01 after the first element " + firstNumberInTheQueue + " was removed");
+		for(int currentNumberFromTheQueue : myQueue01){
+			System.out.println("currentNumberFromTheQueue=" + currentNumberFromTheQueue);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//removing all elements from myQueue01
+		int howManyElementsAreInTheQueueNow = myQueue01.size();
+		for(int count = 0; count < howManyElementsAreInTheQueueNow; count++){
+			int currentlyRemovedNumber = myQueue01.remove();
+			System.out.println("Removed (served) number:" + currentlyRemovedNumber );
+		}
+		System.out.println("The size of myQueue01 now is size()=" + myQueue01.size());
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		/*The size is now ZERO
+		 * What will happen if we try to remove an element?
+		 * */
+		int removedElementFromEmpty;
+		try {
+			//the method remove() throws an exception
+			//this is why you have to pack the whole thing in a try-block 
+			removedElementFromEmpty = myQueue01.remove(); 
+//			Integer obj = new Integer(removedElementFromEmpty);
+//			if(obj == null){
+//				System.out.println("Queue is empty!!");
+//			}else{
+//				System.out.println("removedElementFromEmpty=" + removedElementFromEmpty);
+//			}
+			System.out.println("removedElementFromEmpty=" + removedElementFromEmpty);
+		}catch(NoSuchElementException noSuchEelementExc){
+			System.out.println("There was a NoSuchElementException thrown!! Most probably this queue is empty!!");
+			System.out.println("noSuchEelementExc.getMessage()=" + noSuchEelementExc.getMessage());		
+			System.out.println("noSuchEelementExc.getLocalizedMessage()=" + noSuchEelementExc.getLocalizedMessage());	
+		}catch(Exception exc){
+			System.out.println("There was an Exception!! exc.getClass()="  + exc.getClass());
+			System.out.println("There was an Exception!! exc.getMessage()="  + exc.getMessage());
+		}
+		
+		System.out.println("The program does not break. We are working here at this point!");
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//Let us try the method poll()
+				//https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/concurrent/ConcurrentLinkedQueue.html#poll()
+//		int removedElementFromEmpty_Poll;
+//		try{
+//			//again we have to pack everything in a try-block 
+//			//because if there are no elements in the queue,
+//			//the method poll() will return NULL, and this will result in a NullPointerException
+//			removedElementFromEmpty_Poll = myQueue01.poll();
+//			System.out.println("removedElementFromEmpty_Poll=" + removedElementFromEmpty_Poll);
+//		}catch(NullPointerException nullPointerException){
+//			System.out.println("There was a NullPointerException thrown!! Most probably this queue is empty!!");
+//			System.out.println("nullPointerException.getMessage()=" + nullPointerException.getMessage());		
+//			System.out.println("nullPointerException.getLocalizedMessage()=" + nullPointerException.getLocalizedMessage());	
+//		}catch(Exception exc){
+//			System.out.println("There was an Exception!! exc.getClass()="  + exc.getClass());
+//			System.out.println("There was an Exception!! exc.getMessage()="  + exc.getMessage());
+//		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		//testing the methods element() and peek()
+//		System.out.println("\n\n");
+//		int whoIsStandingAtTheFrontOfTheQueue = myQueue02.element();
+//		System.out.println("Testing with myQueue02.element()  retuned whoIsStandingAtTheFrontOfTheQueue =" + whoIsStandingAtTheFrontOfTheQueue);
+//		//printing the content of myQueue02 after the first elements were added
+//		System.out.println("Printing the content of myQueue02 after whoIsStandingAtTheFrontOfTheQueue was obtained with the method element()");
+//		for(int currentNumberFromTheQueue : myQueue02){
+//			System.out.println("currentNumberFromTheQueue=" + currentNumberFromTheQueue);
+//		}
+//		System.out.println("\n\n");
+//		int whoIsStandingAtTheFrontOfTheQueue_02 = myQueue02.peek();
+//		System.out.println("Testing with myQueue02.peek()  retuned whoIsStandingAtTheFrontOfTheQueue_02 =" + whoIsStandingAtTheFrontOfTheQueue_02);
+//		//printing the content of myQueue02 after the first elements were added
+//		System.out.println("Printing the content of myQueue02 after whoIsStandingAtTheFrontOfTheQueue_02 was obtained with the method peek()");
+//		for(int currentNumberFromTheQueue : myQueue02){
+//			System.out.println("currentNumberFromTheQueue=" + currentNumberFromTheQueue);
+//		}
+		System.out.println("#############################################################################################");
+	}//main
+}//class

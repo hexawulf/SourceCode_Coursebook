@@ -1,0 +1,24 @@
+# Eclipse metadata
+.classpath
+.project
+.settings/
+
+# Build outputs
+bin/
+**/bin/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs or temp
+*.log
+*.tmp
+
+# IDE-specific configs
+.idea/
+*.iml
+
+# VSCode (if used)
+.vscode/
+

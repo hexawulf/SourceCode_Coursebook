@@ -1,0 +1,75 @@
+package maps_00;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class MainClass_01{
+
+	public static void main(String[] args){
+		//declare the map
+		Map<Integer,String> studentsMap = new HashMap<Integer,String>(); 
+		//Collection can handle only Objects, it does not work with primitive datatypes -read page 74 from the course book
+		/* int versus Integer 
+		 * int -this is a primitive data-type
+		 * Integer is the so called wrapper-class
+		 * */
+		
+		studentsMap.put(11, "Student 111");
+		studentsMap.put(22, "Student 222");
+		studentsMap.put(33, "Student 333");
+		studentsMap.put(44, "Student 444");
+		
+		/*Testing the keySet()-method*/
+		Set<Integer> keySetOfTheStudentsMap = studentsMap.keySet();
+		System.out.println("Printing the keys of the studentsMap");
+		for(int currentKeyOfStudent : keySetOfTheStudentsMap){
+			System.out.println("currentKeyOfStudent=" + currentKeyOfStudent);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+		/*Testing the values()-method*/
+		Collection<String> valuesOfTheStudentsMap = studentsMap.values();
+		System.out.println("Printing the values of the studentsMap");
+		for(String currentValueOfStudent : valuesOfTheStudentsMap){
+			System.out.println("currentValueOfStudent=" + currentValueOfStudent);
+		}
+		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+//		/*Testing the entrySet()-method*/
+//		Set<Entry<Integer,String>> setOfEntriesAsKeyValuePairs = studentsMap.entrySet();
+//		System.out.println("Printing of the entries in the studentsMap");
+//		for(Entry<Integer,String> currentEntryFromTheStudentsMap : setOfEntriesAsKeyValuePairs){
+//			Integer keyOfTheCurrentEntry = currentEntryFromTheStudentsMap.getKey();
+//			String valueOfTheCurrentEntry = currentEntryFromTheStudentsMap.getValue();
+//			System.out.println("keyOfTheCurrentEntry=" + keyOfTheCurrentEntry);
+//			System.out.println("valueOfTheCurrentEntry=" + valueOfTheCurrentEntry);
+//			System.out.println();
+//		}
+//		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+		
+//		/*Adding a new element with a key which already exists*/
+//		studentsMap.put(44, "Student 8888");
+//		System.out.println("After adding a new element with a key which already exists");
+//		System.out.println("Printing of the entries in the studentsMap");
+//		for(Entry<Integer,String> currentEntryFromTheStudentsMap : setOfEntriesAsKeyValuePairs){
+//			Integer keyOfTheCurrentEntry = currentEntryFromTheStudentsMap.getKey();
+//			String valueOfTheCurrentEntry = currentEntryFromTheStudentsMap.getValue();
+//			System.out.println("keyOfTheCurrentEntry=" + keyOfTheCurrentEntry);
+//			System.out.println("valueOfTheCurrentEntry=" + valueOfTheCurrentEntry);
+//			System.out.println();
+//		}
+//		System.out.println("#############################################################################################");
+		
+		/*#############################################################################################*/
+	}//main
+
+}//class

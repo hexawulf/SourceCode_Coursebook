@@ -1,0 +1,234 @@
+package workingWithTheFileSystem;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Date;
+
+public class MainClass{
+
+	public static void main(String[] args){
+		/*
+		 * 				IMPORTANT
+		 * Directory = Folder 		==> directory means folder
+		 
+		 */
+		
+		
+		//Enumerating the Root Directories with listRoots
+		System.out.println("Enumerating the Root Directories with listRoots");
+		File[] roots = File.listRoots();
+		for(File root: roots){
+			System.out.println("Next root is:" + root);
+		}
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Enumerating the content of a directory with listFiles
+		System.out.println("Enumerating the content of a directory with listFiles");
+		for(File root: roots){
+			System.out.println("Next root is:" + root);
+			
+			File[] files = root.listFiles();
+			if(files != null){
+				for(File file : files){
+					System.out.println("\tfile.getAbsolutePath()=" + file.getAbsolutePath());
+				}
+			}else{
+				System.out.println("No files in root " + root);
+			}
+			
+		}//outer for
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Platform independent separator for the Directory Hierarchy 
+		String sep = File.separator;
+		String path = "C:" + sep + "var" + sep + "import" + sep;
+		String path01 = "Mickey Mouse";
+		System.out.println("The path is path=" + path);
+		
+		//Methods for querying file information
+//		File directory = new File(path);
+//		System.out.println(path + " exists:" + directory.exists());
+//		System.out.println(path + " is a directory:" + directory.isDirectory());
+//		System.out.println(path + " is a file:" + directory.isFile());
+//		System.out.println(path + " can be read:" + directory.canRead());
+//		System.out.println(path + " can be changed:" + directory.canWrite());
+//		System.out.println(path + " number of bytes:" + directory.length());
+//		System.out.println(path + " date of modification:" + (new Date (directory.lastModified())));
+//		System.out.println("------------------------------------------------------------------------------------------");
+		
+//		System.out.println("Testing for a any path-String, in this case path= Mickey Mouse");
+//		File directory01 = new File(path01);
+//		System.out.println(path01 + " exists:" + directory01.exists());
+//		System.out.println(path01 + " is a directory:" + directory01.isDirectory());
+//		System.out.println(path01 + " is a file:" + directory01.isFile());
+//		System.out.println(path01 + " can be read:" + directory01.canRead());
+//		System.out.println(path01 + " can be changed:" + directory01.canWrite());
+//		System.out.println(path01 + " number of bytes:" + directory01.length());
+//		System.out.println(path01 + " date of modification:" + (new Date (directory01.lastModified())));
+//		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Generation of directories
+//		System.out.println("Generation of directories");
+//		boolean success = processingdirectoryCreation();
+//		System.out.println("Directory created success=" + success);
+		
+		//Moving files with renameTo()
+//		System.out.println("Moving files with renameTo()");
+//		File fileToMove = new File("C:\\var\\import\\testMove.txt");
+//		boolean moved = moveImported(fileToMove);
+//		System.out.println("File moved successfully:" + moved);
+		
+		
+		//As usual --this is your playground and test area
+//		System.out.println("Moving files with renameTo()");
+//		String testMovePath_OnlyDirectory = "C:" + sep + "var" + sep + "import" + sep ;
+//		String fileNameToMove = "test.txt";
+//		String testMovePath_FullPath = testMovePath_OnlyDirectory + fileNameToMove;
+//		File fileToMove = new File(testMovePath_FullPath);
+//		System.out.println("fileToMove.exists()=" + fileToMove.exists());
+//		boolean creationSuccess  = false;
+//		try {
+//			creationSuccess = fileToMove.createNewFile();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println("creationSuccess=" + creationSuccess);
+//		System.out.println("fileToMove.exists()=" + fileToMove.exists());
+//		boolean moved = moveImported(fileToMove);
+//		System.out.println("File moved successfully:" + moved);
+//	
+//		System.out.println("File moved to fileToMove.getAbsolutePath():" + fileToMove.getAbsolutePath());
+//		System.out.println("File moved to fileToMove.getPath():" + fileToMove.getPath());
+//		System.out.println("Why is it that the path did not change?");
+//		System.out.println("Because \"Instances of the File class are immutable; that is, once created, the abstract pathname represented by a File object will never change. \" ");
+//		System.out.println("Information taken from: https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/io/File.html ");
+	
+		/*Please erase the results of the creation and the copying of the files after every execution of the program, 
+		 * otherwise you will get wrong results, and wrong understanding.*/
+		
+		System.out.println("######################################################################################");
+		/*What is the explanation for this behavior?
+		 * 
+		 *Let us first summarize the facts:
+		 *Given:
+		 *1.Directory where we move the file from, let us call it 'FROM'
+		 *2.Directory where we move the file to, let us call it 'TO'
+		 *3.A file which must be moved, let us call it 'fileToMove'
+		 *
+		 *Facts so far:
+		 *1.After you move the file and execute 'fileToMove.getPath()' you got 'C:\var\import\test.txt'
+		 *2.This means that path of the file has not changed, despite the fact that it was moved to 'C:\var\imported\'
+		 *
+		 *Conclusion 0: The original object of type File, called 'fileToMove' showed typical immutable behavior - nothing can be changed 
+		 *
+		 *What can we do?
+		 *We can check the content of:
+		 *1.The directory TO
+		 *2.The directory FROM
+		 *
+		 *Let's do this now:
+		 */
+		
+//		System.out.println("Printing the content of the directory where the file was moved TO:");
+//		String pathWhereFileWasCopied_TO = "C:" + sep + "var" + sep + "imported" + sep;
+//		System.out.println("pathWhereFileWasCopied_TO=" + pathWhereFileWasCopied_TO);
+//		File directoryWhereFileWasCopied_TO = new File(pathWhereFileWasCopied_TO);
+//		File[] arrayOfFilesInTheDirectoryWhereTheFileWasCopied_TO = directoryWhereFileWasCopied_TO.listFiles();
+//		for(File currentFile: arrayOfFilesInTheDirectoryWhereTheFileWasCopied_TO){
+//			System.out.println("currentFile.getName()=" + currentFile.getName());
+//			System.out.println("currentFile.getAbsolutePath()=" + currentFile.getAbsolutePath());
+//			System.out.println("currentFile.getPath()=" + currentFile.getPath());	
+//		}
+		/*WOW, what a surprise!!
+		 *  - The call 'currentFile.getName()' returned 'test.txt'
+		 *  - The call 'currentFile.getPath()' returned 'C:\var\imported\test.txt'
+		 * Conclusion 1: There is an object of type File , which has name 'test.txt' and it is located in 'C:\var\imported\test.txt'
+		 * */
+		System.out.println("######################################################################################");		
+		
+//		System.out.println("Printing the content of the directory where the file was moved FROM:");		
+//		File directoryWhereFileWasCopied_FROM = new File(testMovePath_OnlyDirectory);
+//		System.out.println("testMovePath_OnlyDirectory=" + testMovePath_OnlyDirectory);
+//		
+//		File[] arrayOfFilesInTheDirectoryWhereTheFileWasCopied_FROM = directoryWhereFileWasCopied_FROM.listFiles();
+//		for(File currentFile: arrayOfFilesInTheDirectoryWhereTheFileWasCopied_FROM){
+//			System.out.println("currentFile.getName()=" + currentFile.getName());
+//			System.out.println("currentFile.getAbsolutePath()=" + currentFile.getAbsolutePath());
+//			System.out.println("currentFile.getPath()=" + currentFile.getPath());		
+//		}
+		/*WOW
+		 * Another surprise - there is no sign of files in the directory FROM
+		 * Conclusion 2: For the file system, looks like there is no file located in 'C:\var\import\'*/
+		System.out.println("######################################################################################");
+		/*When we combine
+		 * Conclusion 0 with Conclusion 1 with Conclusion 2,
+		 * we see that:
+		 * When you move a file by using the method renameTo()
+		 * the original file stays unchanged, because it is immutable,
+		 * and in the destination directory is created a new file which has the same name as the original,
+		 * but this is a DIFFERENT OBJECT!!
+		 * The original file is NOT visible for the file system!!*/
+		
+		System.out.println("######################################################################################");
+		
+		
+		
+		
+		
+		
+		
+	}//main
+	
+	//Generation of directories
+	public static boolean processingdirectoryCreation(){
+		String sep = File.separator;
+		String path = "C:" + sep + "var" + sep + "imported" + sep;
+		File directory = new File(path);
+		if(directory.exists() && directory.canWrite()){
+			return true;
+		}else{
+			return directory.mkdirs();
+		}
+	}
+	
+	//Moving files with renameTo() 
+	public static boolean moveImported(File file){
+		String sep = File.separator;
+		String path = "C:" + sep + "var" + sep + "imported" + sep;
+		path = path + file.getName();
+		
+		File newLocation = new File(path);
+		return file.renameTo(newLocation);
+	}
+	
+	public static void printFileContent(File file){
+		try{
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			//process file
+			for(String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()){
+				//process one line from the file
+				System.out.println("Next line is:"+ line);
+			}
+			
+			//close the data streams
+			bufferedReader.close();
+			fileReader.close();
+		}catch(FileNotFoundException ex){//Error handling
+			ex.printStackTrace();
+		}catch(IOException ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	
+}//class

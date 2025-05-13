@@ -1,0 +1,24 @@
+package stacks_01;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class History{
+	private Deque<String> history = new ArrayDeque<String>();
+	
+	public String back(){
+		//using peekfirst(), 
+		//because it returns NULL, 
+		//if the queue is empty 
+		String lastStep = history.peekFirst();
+		if(lastStep != null){
+			history.removeFirst();
+		}
+		//System.out.println("TEST lastStep=" + lastStep);
+		return lastStep;
+	}//back
+	
+	public void next(String s){
+		history.addFirst(s);
+	}//next 
+}//class

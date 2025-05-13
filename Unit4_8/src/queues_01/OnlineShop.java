@@ -1,0 +1,69 @@
+package queues_01;
+
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+public class OnlineShop {
+	
+	private Queue<Order> orders = new ConcurrentLinkedQueue<Order>();
+
+	public static void main(String[] args) {
+		
+		OnlineShop shop= new OnlineShop();	
+		Customer orderer = new Customer("Ralf" , "Koschke");
+		
+		ShoppingCart w1 = new ShoppingCart();
+		Book book00 = new NonfictionBook("dpunkt Verlag", "Requirements Engineering", 49.00f,"Klaus Pohl");
+		Book book01 = new NonfictionBook("Spektrum", "UML Kompakt", 14.99f,"Heide Balzert");
+		w1.addProduct(book00);
+		w1.addProduct(1,book01);
+		Order first = new Order("2013-08-13 15:33:56", orderer, w1);
+		shop.orders.offer(first);
+		
+		ShoppingCart w2 = new ShoppingCart();
+		Book book02 = new NonfictionBook("Spektrum", "Software Quality", 34.99f,"Peter Liggesmeyer");
+		Book book03 = new NonfictionBook("Springer", "Faint Objects", 27.00f,"Brian Cudnik");
+		w2.addProduct(book02);
+		w2.addProduct(0,book03);
+		Order second = new Order("2013-08-13 15:42:11", orderer, w2);
+		shop.orders.offer(second);
+		
+		ShoppingCart w3 = new ShoppingCart();
+		Book book04 = new NonfictionBook("Pearson", "Software Engineering", 59.95f,"Ian Summerville");
+		Book book05 = new NonfictionBook("Spektrum", "Softwaremanagement", 64.99f,"Helmut Balzert");
+		w3.addProduct(book04);
+		w3.addProduct(0,book05);
+		Order third = new Order("2013-08-13 15:45:23", orderer, w3);
+		shop.orders.offer(third);
+		
+		while(!shop.orders.isEmpty()){ // shop.orders.isEmpty() == 
+			/* This solution with the while loop works if there is only one .poll() 
+			 * Of course this is the normal way it is supposed to work, because 
+			 * the poll() operation is used to delete an element from the head of the queue. 
+			 * If it performs delete operation successfully, it returns the head element of the queue. 
+			 * Otherwise it returns �null� value.
+			 */
+			//System.out.println(shop.orders.poll().getOrderer().toString());
+			System.out.println("shop.orders.isEmpty()=" + shop.orders.isEmpty());
+			System.out.println("!shop.orders.isEmpty()=" + !shop.orders.isEmpty());
+			
+			Order currentOrder = shop.orders.poll();
+			ShoppingCart currentShoppingCart = currentOrder.getShoppingCart();
+			String currentShoppingCart_RepresentationAsString = currentShoppingCart.toString();
+			System.out.println(currentShoppingCart_RepresentationAsString);
+			//System.out.println(shop.orders.poll().getShoppingCart().toString());//uncomment this line to break the code :)
+		}
+		System.out.println("\n\n");
+		System.out.println("shop.orders.isEmpty()=" + shop.orders.isEmpty());
+		System.out.println("!shop.orders.isEmpty()=" + !shop.orders.isEmpty());
+		
+		
+		
+		//As usual --this is your playground and test area
+		
+		
+		
+		
+	}//main
+
+}

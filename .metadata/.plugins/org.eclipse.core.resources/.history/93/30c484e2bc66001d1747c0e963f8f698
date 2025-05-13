@@ -1,0 +1,215 @@
+package strings_01;
+
+public class MainClass_01{
+
+	public static void main(String[] args){
+		//Literal notation for different data types
+		boolean truthValue  = false;
+		int wholeNumber = 121231;
+		float floatingPointNumber = 231.45f;
+		//String greeting = "Hello world some TEST 02";
+		
+		System.out.println("truthValue=" + truthValue);
+		System.out.println("wholeNumber=" + wholeNumber);
+		System.out.println("floatingPointNumber=" + floatingPointNumber);	
+		//System.out.println("greeting=" + greeting);
+		System.out.println("------------------------------------------------------------------------------------------");
+		
+		//Linking Strings and Primitives with the Plus operator
+		String greeting = "Hello programmer";
+		greeting = greeting + ",";//Linking with +
+		String output = greeting 
+					+ " there were " + args.length //Linking int and string with +
+					+ " transferred parameters";//this is the implicit conversion 
+		System.out.println(output);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Demo for copy-constructor
+		String str1 = new String("Hello");
+		String str2 = new String(str1);
+		
+		if(str1 == str2){
+			System.out.println("str1 refers to the same memory area as str2");
+		}else {
+			System.out.println("str1 refers to DIFFERENT memory area than str2");
+		}
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Constructors of the String class
+		String empty = new String();
+		String copy = new String("original");
+		char[] c = {'j','a','v','a'};
+		String ofChars = new String(c);
+		System.out.println("Parameterless constructor created the string empty=" + empty);//add  + "|" to test 
+		System.out.println("Copy-constructor created the string copy=" + copy);
+		System.out.println("String instance from char-array is ofChars=" + ofChars);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Transformation of Primitive Data Types into Strings
+		int a = 12;
+		float f = 1.45f;
+		
+		String aString1 = "" + a;
+		String fString1 = "" + f;
+		
+		String aString2 = String.valueOf(a);
+		String aString3 = Integer.toString(a);
+		String fString2 = String.valueOf(f);
+		
+		System.out.println("only a=" + a);
+		System.out.println("aString1=" + aString1);
+		System.out.println("aString2=" + aString2);
+		System.out.println("aString3=" + aString3);
+		System.out.println("fString1=" + fString1);
+		System.out.println("fString2=" + fString2);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Transformation of Strings into Primitive Data Types
+		String bString = "true";
+		boolean bool = Boolean.parseBoolean(bString);
+		
+		String byteString = "127";
+		byte byt = Byte.parseByte(byteString);
+		
+		String shortString = "255";
+		short s = Short.parseShort(shortString);
+		
+		String intString = "12345";
+		int i = Integer.parseInt(intString);
+		
+		String longString = "123456789";
+		long l = Long.parseLong(longString);
+		
+		String floatString = "12.4";
+		float fl = Float.parseFloat(floatString);
+		
+		String doubleString = "1.14738462726";
+		double d = Double.parseDouble(doubleString);
+		
+		String noNumber = "ag4612";
+		
+		try{
+			int number = Integer.parseInt(noNumber);//This will throw an exception 
+		}catch(Exception exc){
+			System.out.println("\nEXCEPTION!!");
+			System.out.println("There is an exception!!");
+			System.out.println("The exc.toString()=" + exc.toString());
+			System.out.println("The exc.getMessage()=" + exc.getMessage());
+			System.out.println("The exc.getLocalizedMessage()=" + exc.getLocalizedMessage());
+			System.out.println("The exc.getClass()=" + exc.getClass());
+			System.out.println();
+		}
+		
+		System.out.println("Boolean parsed result bool=" + bool);
+		System.out.println("Byte parsed result byt=" + byt);
+		System.out.println("Short parsed result s=" + s);
+		System.out.println("Integer parsed result i=" + i);
+		System.out.println("Long parsed result l=" + l);
+		System.out.println("Float parsed result fl=" + fl);
+		System.out.println("Double parsed result d=" + d);
+		
+		System.out.println("------------------------------------------------------------------------------------------");	
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Partial String Comparisons
+		String fileName = "2022-03-12_A_GmbH_001.csv";
+		if(fileName.endsWith(".csv") == true){
+			System.out.println("The filename ends with '.csv' !");
+		}
+		
+		String currentYear = "2022";
+		if(fileName.startsWith(currentYear) == true){
+			System.out.println("The file name \"" + fileName + "\" starts with the current year " + currentYear);
+		}
+		
+		String versionNumer = "001";
+		if(fileName.contains(versionNumer) == true){
+			System.out.println("The file name \"" + fileName + "\" contains the version number " + versionNumer);
+		}
+		
+		if((fileName.endsWith(".csv") == true) 
+				&&  (fileName.startsWith(currentYear) == true) 
+				&& (fileName.contains(versionNumer) == true)) {
+			System.out.println("\n\n All three conditions are TRUE!! \n\n");
+		}//
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Partial String positions
+		int manufacturerStart = fileName.indexOf("_");//delivers the index of the first occurrence 
+		int manufacturerEnd = fileName.lastIndexOf("_");//delivers the index of the last occurrence 
+		System.out.println("manufacturerStart=" + manufacturerStart);
+		System.out.println("manufacturerEnd=" + manufacturerEnd);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Extracting a Partial String with substring()
+		int titleStart = fileName.indexOf("_");//delivers the index of the first occurrence 
+		int titleEnd = fileName.lastIndexOf("_");//delivers the index of the last occurrence 
+		System.out.println("titleStart=" + titleStart);
+		System.out.println("titleEnd=" + titleEnd);
+		String manufacturerName  = fileName.substring(titleStart +1, titleEnd);//manufacturerStart+1, because it is inclusive, exclusive the manufacturerEnd
+		System.out.println("manufacturerName=" + manufacturerName);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Replacing a Partial String with replace
+		String realManufacturerName = manufacturerName.replace("_", " ");//replaces all occurrences of "_" with a space 
+		
+		System.out.println("realManufacturerName=" + realManufacturerName);
+		
+		System.out.println("still manufacturerName=" + manufacturerName);
+		//no change of the original data, since Strings are immutable, 
+		//i.e. all modifying methods always return a new string object 
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+//		//Application of the Method equalsIgnoreCase()
+//		int pointPosition = fileName.lastIndexOf('.');
+//		//here is looking for a char, not for a string. 
+//		//However, even if it looks for a string, the result will be the same 
+//		
+//		String fileEnding = fileName.substring(pointPosition + 1);//don't forget - it is inclusive, so add 1 (+1)
+//		if(fileEnding.equalsIgnoreCase("csv") == true){//verification without consideration of upper or lower case 
+//			System.out.println("The file ending is .csv");
+//		}
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Comparison Methods of the "String" Class
+//		String name1 = "Adelbert";
+//		String name2 = "Adele";
+//		
+//		if(name1.compareToIgnoreCase(name2) < 0){
+//			System.out.println(name1 + " is located before " + name2 + " in the phone book");
+//		}else if(name1.compareToIgnoreCase(name2) > 0){
+//			System.out.println(name1 + " is located after " + name2 + " in the phone book");
+//		}else{
+//			System.out.println(name1 + " and" + name2 + " are equal");
+//		}
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		
+		
+		
+		
+		
+		
+		//As usual --this is your playground and test area
+		
+		
+		
+		
+		
+		
+		
+	}//main
+
+}//class

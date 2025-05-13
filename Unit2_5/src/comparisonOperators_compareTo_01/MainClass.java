@@ -1,0 +1,59 @@
+package comparisonOperators_compareTo_01;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+//		Customer cust01 =  new Customer("Y", "X", "Male","01.Jan.1991");
+//		Customer cust02 =  new Customer("Y", "X", "Male","01.Feb.1991");
+		
+		Customer cust01 =  new Customer("Ahmed", "Awad", "Male","01.Jan.1991");
+		Customer cust02 =  new Customer("z", "awad", "Male","01.Feb.1991");
+		
+		cust01.setCustomerNumber(60);
+		cust02.setCustomerNumber(55);
+		
+		int comparisonResult = cust01.compareTo(cust02);
+		int comparisonResult_oppositeDirection = cust02.compareTo(cust01);
+		
+		System.out.println("cust01.compareTo(cust02)=" + comparisonResult);
+		System.out.println("cust02.compareTo(cust01)=" + comparisonResult_oppositeDirection);
+		
+		if(comparisonResult < 0){
+			System.out.println("cust01 is smaller than cust02, i.e. cust01 is before cust02 in the order");
+		}else if(comparisonResult > 0){
+			System.out.println("cust02 is smaller than cust01, i.e. cust02 is before cust01 in the order");
+		}else{
+			System.out.println("The customers are equal");
+		}
+		
+		
+//		String test = "Test";
+//		int comparisonResult_Test = cust01.compareTo(test);
+//		System.out.println("comparisonResult_Test=" + comparisonResult_Test);
+		//Discussing the tip on page 37
+//		try{
+//			int comparisonResult_Test = cust01.compareTo(test);
+//			System.out.println("comparisonResult_Test=" + comparisonResult_Test);
+//		}catch(ClassCastException exc){
+//			System.out.println("There was a ClassCastException! The exception message is:" + exc.getMessage());
+//		}
+		
+		
+		
+		//As usual --this is your playground and test area
+		
+		
+		
+		String myStr01 = "A";
+		String myStr02 = "B";
+		String myStr03 = "a";
+		
+		//System.out.println("Comparison myStr01.compareTo(myStr02)=" + myStr01.compareTo(myStr02)); //myStr01 is before myStr02 in the alphabet
+		//System.out.println("Comparison myStr02.compareTo(myStr01)=" + myStr02.compareTo(myStr01)); //myStr02 is after myStr01 in the alphabet 
+		//System.out.println("Comparison myStr01.compareTo(myStr03)=" + myStr01.compareTo(myStr03)); //myStr01 is before myStr03 in the alphabet
+		//Capital letters come lexicographically before small letters
+		
+	}//main
+
+}//class

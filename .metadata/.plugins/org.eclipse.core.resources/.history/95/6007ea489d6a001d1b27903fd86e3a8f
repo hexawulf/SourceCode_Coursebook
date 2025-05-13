@@ -1,0 +1,100 @@
+package dateAndTime_01;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MainClass_01{
+
+	public static void main(String[] args){
+		//Generation of Date instances
+		System.out.println("Generation of Date instances");
+		Date date1 = new Date();
+		
+		//(year + 1900 = 2013. For our case means writing 113 as year-this means 2013)
+		Date date2 = new Date(113,11,24,17,45,15);
+		//deprecated - should not be used, 
+		//because in future versions of java class library it might be removed completely
+		
+		System.out.println("date1=" + date1);
+		System.out.println("date2=" + date2);
+		
+		System.out.println("\nOutdated Methods of the Date class");
+		date1.setMonth(date1.getMonth() + 6); //Also deprecated. Please find on your own the appropriate documentation from Oracle 
+		System.out.println("After adding 6 Months date1=" + date1);
+		//CET = UTC + 1 hour
+		//CEST = UCT + 2 hours - describes summer time 	
+		
+		
+		long currentTimeMiliseconds = System.currentTimeMillis();
+		System.out.println("currentTimeMiliseconds=" + currentTimeMiliseconds);
+		Date date3 = new Date(currentTimeMiliseconds);
+		System.out.println("date3=" + date3);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Utilization of the Class "SimpleDateFormat"
+		System.out.println("Utilization of the Class \"SimpleDateFormat\"");
+		SimpleDateFormat sdf;
+		sdf = new SimpleDateFormat("dd.MM.yyyy");//Pattern for Date formatting
+		//MM - months, mm -minutes, dd -calendar day, DD-day in the year, in September is the 277th day:04.October
+		
+		String formattedDate = sdf.format(date1);
+		System.out.println("formattedDate = " + formattedDate);
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Parsing a Date with the SimpleDateFormat.parse() method
+		System.out.println("Parsing a Date with the SimpleDateFormat.parse() method");
+		
+		String dateString = "31.12.2013";
+		try{
+			Date date = sdf.parse(dateString);
+			String formatedDate_01 = sdf.format(date);
+			System.out.println("date after parsing date=" + date);
+			System.out.println("Test in class formated output formatedDate_01=" + formatedDate_01);
+		} catch(ParseException e){
+			System.out.println("An exception occurred!!");
+			System.out.println("e.getClass()=" + e.getClass());
+			System.out.println("e.getMessage()=" + e.getMessage());
+			System.out.println("e.getLocalizedMessage()=" + e.getLocalizedMessage());
+		}
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+		
+		//Formatting with predefined instances
+		System.out.println("Formatting with predefined instances");
+		Date date = new Date();
+		DateFormat df;//super class of SimpleDateFormat
+		
+		df =  DateFormat.getDateInstance();
+		System.out.println("Output 1=> df.format(date)=" + df.format(date));
+		df =  DateFormat.getDateInstance(DateFormat.SHORT);
+		System.out.println("Output 2=> df.format(date)=" + df.format(date));
+		
+		df = DateFormat.getTimeInstance();
+		System.out.println("Output 3=> df.format(date)=" + df.format(date));
+		df =  DateFormat.getTimeInstance(DateFormat.MEDIUM);
+		System.out.println("Output 4=> df.format(date)=" + df.format(date));
+		
+//		df = DateFormat.getDateTimeInstance();
+//		System.out.println("Output 5=> df.format(date)=" + df.format(date));
+//		df =  DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.FULL);
+//		System.out.println("Output 6=> df.format(date)=" + df.format(date));
+		
+		System.out.println("------------------------------------------------------------------------------------------");
+		/*------------------------------------------------------------------------------------------------------------*/
+	
+		
+		
+		
+		//As usual --this is your playground and test area
+		
+		
+		
+		
+	
+	}//main
+
+}//class
